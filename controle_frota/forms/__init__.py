@@ -1,0 +1,4 @@
+from .cadastrarVeiculos_forms import CadastrarVeiculosForm
+from .editarVeiculos_forms import EditarVeiculosForm
+from .excluirVeiculos_forms import ExcluirVeiculosForm
+from .listarVeiculos_forms import ListarVeiculosForm

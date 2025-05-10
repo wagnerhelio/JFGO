@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu - JFGO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .menu-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .menu-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-buttons a {
+            padding: 15px;
+            font-size: 16px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-buttons a:hover {
+            background-color: #1976D2;
+        }
+
+        .menu-buttons .admin {
+            background-color: #607d8b;
+        }
+
+        .menu-buttons .admin:hover {
+            background-color: #455a64;
+        }
+
+        @media (max-width: 500px) {
+            .menu-container {
+                padding: 20px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .menu-buttons a {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Menu Principal</h1>
+        <div class="menu-buttons">
+            <a href="{% url 'cadastrar_veiculos' %}">➕ Cadastrar Veículo</a>
+            <a href="{% url 'listar_veiculos' %}">📄 Listar Veículos</a>
+            <a href="{% url 'cadastrar_tipoplaca' %}">🆕 Tipo de Placa</a>
+            <a href="{% url 'cadastrar_grupoveiculo' %}">🆕 Grupo de Veículo</a>
+            <a href="/admin/" class="admin">⚙️ Administração</a>
+            <a href="{% url 'logout' %}">🚪 Sair</a>
+        </div>
+    </div>
+</body>
+</html>

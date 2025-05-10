@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tipo de Placa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        button, a {
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .salvar { background-color: #4CAF50; }
+        .salvar:hover { background-color: #388E3C; }
+
+        .voltar { background-color: #2196F3; }
+        .voltar:hover { background-color: #1976D2; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Editar Tipo de Placa</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="buttons">
+            <button type="submit" class="salvar">Salvar Alterações</button>
+            <a href="{% url 'menu' %}" class="voltar">Voltar ao Menu</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

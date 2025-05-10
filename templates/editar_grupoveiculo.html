@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Grupo de Veículo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons a,
+        .buttons button {
+            flex: 1;
+            padding: 12px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+            border: none;
+            text-decoration: none;
+            color: white;
+        }
+
+        .salvar { background-color: #4CAF50; }
+        .voltar { background-color: #9E9E9E; }
+
+        .salvar:hover { background-color: #388E3C; }
+        .voltar:hover { background-color: #616161; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Editar Grupo de Veículo</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="buttons">
+                <button type="submit" class="salvar">Salvar Alterações</button>
+                <a href="{% url 'cadastrar_grupoveiculo' %}" class="voltar">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
