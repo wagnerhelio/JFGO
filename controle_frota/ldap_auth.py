@@ -9,6 +9,11 @@ def autenticar_usuario_ad(username, password):
     usuario_servico = os.getenv('AD_USER')
     senha_servico = os.getenv('AD_PASSWORD')
     base_dn = "OU=Secao Judiciaria do Estado de Goias,DC=go,DC=trf1,DC=gov,DC=br"
+    
+    print("[DEBUG] usuário serviço bruto:", usuario_servico)
+    print("[DEBUG] usuário serviço repr:", repr(usuario_servico))
+    print("[DEBUG] usuário serviço bruto:", username)
+    print("[DEBUG] usuário serviço repr:", repr(username))
 
     if '\\' not in username:
         dominio = os.getenv("USERDOMAIN", "jfgo")
