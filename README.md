@@ -43,12 +43,26 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 ```bash
-python manage.py runserver
+@"
+AD_USER=jfgo\\exemplo_svc_control_frota
+AD_PASSWORD=exemplo_jfgo@1234
+DN=CN=Sistema de Frota (Residente de TI),OU=Servico,OU=Usuarios,OU=Secao Judiciaria do Estado de Goias,DC=go,DC=trf1,DC=gov,DC=br
+"@ | Out-File -Encoding UTF8 .env
+```
+```bash
+cat <<EOF > .env
+AD_USER=jfgo\\exemplo_svc_control_frota
+AD_PASSWORD=exemplo_jfgo@1234
+DN=CN=Sistema de Frota (Residente de TI),OU=Servico,OU=Usuarios,OU=Secao Judiciaria do Estado de Goias,DC=go,DC=trf1,DC=gov,DC=br
+EOF
 ```
 ```bash
 AD_USER=jfgo\\exemplo_svc_control_frota
 AD_PASSWORD=exemplo_jfgo@1234
 DN: CN=Sistema de Frota (Residente de TI),OU=Servico,OU=Usuarios,OU=Secao Judiciaria do Estado de Goias,DC=go,DC=trf1,DC=gov,DC=br
+```
+```bash
+python manage.py runserver
 ```
 ```bash
 http://127.0.0.1:8000/admin
