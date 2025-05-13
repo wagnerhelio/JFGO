@@ -23,6 +23,7 @@ def login_ad_view(request):
             return redirect('menu')
         else:
             messages.error(request, 'Usuário ou senha inválidos, ou falha na autenticação do AD.')
+            return redirect('login')
     return render(request, 'login.html')
 
 from django.contrib.auth import logout
