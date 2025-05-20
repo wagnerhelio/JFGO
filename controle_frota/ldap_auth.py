@@ -12,8 +12,8 @@ def autenticar_usuario_ad(username, password):
     
     print("[DEBUG] usuário serviço bruto:", usuario_servico)
     print("[DEBUG] usuário serviço repr:", repr(usuario_servico))
-    print("[DEBUG] usuário serviço bruto:", username)
-    print("[DEBUG] usuário serviço repr:", repr(username))
+    print("[DEBUG] usuário digitado bruto:", username)
+    print("[DEBUG] usuário digitado repr:", repr(username))
 
     if '\\' not in username:
         dominio = os.getenv("USERDOMAIN", "jfgo")

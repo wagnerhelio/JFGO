@@ -62,5 +62,11 @@ AD_PASSWORD=exemplo_jfgo@1234
 python manage.py runserver
 ```
 ```bash
+python manage.py runserver 0.0.0.0:8000
+```
+```bash
 http://127.0.0.1:8000/admin
+```
+```bash
+http://srvlabdbdsv-go.go.trf1.gov.br:8000/
 ```
