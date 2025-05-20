@@ -1,5 +1,6 @@
 from ldap3 import Server, Connection, NTLM, ALL, ALL_ATTRIBUTES, SUBTREE
 import os
+import re
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -42,15 +43,24 @@ def autenticar_usuario_ad(username, password):
 
             usuario_dn = conn.entries[0].entry_dn
             print(f"[DEBUG] DN encontrado: {usuario_dn}")
-
+            
+            match = re.search(r'CN=([^,]+)', usuario_dn)
+            nome_completo = match.group(1) if match else usuario_busca
+            
         # Segunda conexão com login NTLM (domínio\usuário)
         usuario_login_ntlm = f"jfgo\\{usuario_busca}"
         print(f"[DEBUG] Tentando autenticar com: {usuario_login_ntlm}")
 
         with Connection(servidor, user=usuario_login_ntlm, password=password,
                         authentication=NTLM, auto_bind=True) as conn_user:
-            print("[DEBUG] Autenticado com sucesso.")
-            return conn_user.bound
+            if conn_user.bound:
+                print("[DEBUG] Autenticado com sucesso.")
+                return {
+                    'username': usuario_login_ntlm,
+                    'nome_completo': nome_completo
+                }
+            else:
+                return False
 
     except Exception as e:
         print(f"[ERRO] Erro ao autenticar no AD: {e}")
