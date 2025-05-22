@@ -2,3 +2,7 @@ from .cadastrarVeiculos_forms import CadastrarVeiculosForm
 from .editarVeiculos_forms import EditarVeiculosForm
 from .excluirVeiculos_forms import ExcluirVeiculosForm
 from .listarVeiculos_forms import ListarVeiculosForm
+from .cadastrarRequisicao_forms import CadastrarRequisicaoForm
+from .editarRequisicao_forms import EditarRequisicaoForm
+from .excluirRequisicao_forms import ExcluirRequisicaoForm
+from .listarRequisicao_forms import ListarRequisicaoForm

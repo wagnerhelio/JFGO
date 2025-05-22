@@ -110,6 +110,7 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
         .kpi {
@@ -147,6 +148,7 @@
             <a href="{% url 'listar_veiculos' %}">📄 <span class="menu-text">Listar Veículos</span></a>
             <a href="{% url 'cadastrar_tipoplaca' %}">🆕 <span class="menu-text">Tipo de Placa</span></a>
             <a href="{% url 'cadastrar_grupoveiculo' %}">🆕 <span class="menu-text">Grupo de Veículo</span></a>
+            <a href="{% url 'listar_requisicao' %}">🚗 <span class="menu-text">Requisições</span></a>
             <a href="/admin/" class="admin">⚙️ <span class="menu-text">Administração</span></a>
         </div>
     </div>
@@ -162,11 +164,18 @@
             </div>
         </div>
 
-        <h1>Dashboard de Veículos</h1>
+        <h1>Dashboard</h1>
+
         <div class="kpis">
             <div class="kpi"><strong>Total de Veículos:</strong> {{ total }}</div>
             <div class="kpi"><strong>Ativos:</strong> {{ ativos }}</div>
             <div class="kpi"><strong>Inativos:</strong> {{ inativos }}</div>
+        </div>
+
+        <div class="kpis">
+            <div class="kpi"><strong>Total de Requisições:</strong> {{ total_requisicoes }}</div>
+            <div class="kpi"><strong>Pendentes de Aprovação:</strong> {{ requisicoes_pendentes }}</div>
+            <div class="kpi"><strong>Aprovadas:</strong> {{ requisicoes_aprovadas }}</div>
         </div>
     </div>
 

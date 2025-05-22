@@ -1,5 +1,5 @@
 from django.contrib import admin
-from controle_frota.models import Veiculo, TipoPlaca, GrupoVeiculo
+from controle_frota.models import Veiculo, TipoPlaca, GrupoVeiculo,Requisicao
 
 @admin.register(Veiculo)
 class VeiculoAdmin(admin.ModelAdmin):
@@ -9,3 +9,9 @@ class VeiculoAdmin(admin.ModelAdmin):
 
 admin.site.register(TipoPlaca)
 admin.site.register(GrupoVeiculo)    
+
+@admin.register(Requisicao)
+class RequisicaoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'tipo', 'veiculo', 'data_utilizacao', 'unidade')
+    list_filter = ('tipo', 'data_utilizacao', 'unidade')
+    search_fields = ('veiculo__placa', 'unidade', 'usuario', 'itinerario')

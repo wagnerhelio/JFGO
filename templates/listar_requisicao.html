@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Requisições Cadastradas</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            display: inline-block;
+            padding: 12px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            background-color: #4CAF50;
+        }
+        .buttons .menu {
+            background-color: #2196F3;
+        }
+        .buttons .menu:hover {
+            background-color: #1976D2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Requisições Cadastradas</h2>
+
+        <div class="buttons">
+            <a href="{% url 'menu' %}" class="menu">Voltar ao Menu</a>
+            <a href="{% url 'cadastrar_requisicao' %}">Cadastrar Requisição</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Veículo</th>
+                    <th>Data</th>
+                    <th>Unidade</th>
+                    <th>Usuário</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for requisicao in requisicoes %}
+                <tr>
+                    <td>{{ requisicao.veiculo }}</td>
+                    <td>{{ requisicao.data_utilizacao }}</td>
+                    <td>{{ requisicao.unidade }}</td>
+                    <td>{{ requisicao.usuario }}</td>
+                    <td>{{ requisicao.status }}</td>
+                    <td>
+                        <a href="{% url 'editar_requisicao' requisicao.id %}">Editar</a> |
+                        <a href="{% url 'editar_status_requisicao' requisicao.id %}">Status</a> |
+                        <a href="{% url 'excluir_requisicao' requisicao.id %}">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">Nenhuma requisição cadastrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
