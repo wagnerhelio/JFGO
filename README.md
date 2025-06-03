@@ -1,5 +1,3 @@
-# Memora
-Perform 
 # Projeto JFGO
 
 ## ✅ Requisitos
